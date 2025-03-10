@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>处理中...</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>正在处理文件...</h1>
+        <div id="progress-bar" class="progress-bar">0%</div>
+        <script>
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+            socket.emit('join', { session_id: '{{ session_id }}' });
+
+            socket.on('progress', function(msg) {
+                var progressBar = document.getElementById('progress-bar');
+                progressBar.style.width = msg.progress + '%';
+                progressBar.textContent = msg.progress.toFixed(2) + '%';
+            });
+
+            socket.on('complete', function(msg) {
+                if (msg.redirect) {
+                    window.location.href = msg.redirect;  // 跳转到下载页面
+                }
+            });
+
+            socket.on('error', function(msg) {
+                alert('处理文件时出错: ' + msg.message);
+                window.location.href = '/';
+            });
+        </script>
+    </div>
+</body>
+</html>

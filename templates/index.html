@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XLSX Highlighter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>XLSX文件匹配高亮工具</h1>
+        <form action="/" method="POST" enctype="multipart/form-data" class="upload-form">
+            <label for="file1">文件1:</label>
+            <input type="file" id="file1" name="file1" required><br><br>
+
+            <label for="file2">文件2:</label>
+            <input type="file" id="file2" name="file2" required><br><br>
+
+            <label for="color">高亮颜色:</label>
+            <input type="color" id="color" name="color" value="#00FF00" required><br><br>
+
+            <label for="file1_column">文件1列名:</label>
+            <input type="text" id="file1_column" name="file1_column" required><br><br>
+
+            <label for="file2_column">文件2列名:</label>
+            <input type="text" id="file2_column" name="file2_column" required><br><br>
+
+            <label for="file1_header_row">文件1标题行号:</label>
+            <input type="number" id="file1_header_row" name="file1_header_row" value="1" required><br><br>
+
+            <label for="file2_header_row">文件2标题行号:</label>
+            <input type="number" id="file2_header_row" name="file2_header_row" value="2" required><br><br>
+
+            <button type="submit" class="submit-button">处理文件</button>
+        </form>
+    </div>
+</body>
+</html>

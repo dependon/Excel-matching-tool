@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载处理后的文件</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>处理完成！</h1>
+        <p>点击以下链接下载处理后的文件：</p>
+        <a href="{{ url_for('download_file', session_id=session_id, filename='file1_highlighted.xlsx') }}" class="download-link">下载文件1</a><br>
+        <a href="{{ url_for('download_file', session_id=session_id, filename='file2_highlighted.xlsx') }}" class="download-link">下载文件2</a>
+    </div>
+</body>
+</html>
