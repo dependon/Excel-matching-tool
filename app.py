@@ -222,9 +222,7 @@ if __name__ == '__main__':
     cleanup_thread.start()
 
     try:
-        # 若需要使用 SSL，配置 SSL 上下文
-        # socketio.run(app, host='0.0.0.0', port=6124, ssl_context=('/path/to/cert.pem', '/path/to/key.pem'))
-        socketio.run(app, host='0.0.0.0', port=6124)
+        app.run(debug=True)
     except KeyboardInterrupt:
         pass
     finally:
